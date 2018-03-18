@@ -316,6 +316,10 @@ The -m specifies a tagging message, which is stored with the tag. If you don’t
 
 
 ### Git Branching
+ #### Creating a New Branch
+  ```
+  $ git branch testing
+  ```
 
 ### Git on the Server
 

@@ -140,4 +140,43 @@ Now, see what happens by typing the following commands in different command wind
   ```
   
 #### [2] '02_docker_ros_compose' branch: build & run a ros-tutorial Dockerfile using 'docker-compose'
+If you haven't built the image 'hri/ros:ros-tutorials', build it as
+  ```
+  $ docker build hri/ros:ros-tutorials .
+  ```
+  
+Make a 'docker-compose.yml' file as
+  ```
+  $ vi docker-compose.yml
+  version: '2'
 
+  services:
+
+    master:
+      image: hri/ros:ros-tutorials
+      container_name: master
+      command:
+        - roscore
+
+    talker:
+      image: hri/ros:ros-tutorials
+      container_name: talker
+      environment:
+        - "ROS_HOSTNAME=talker"
+        - "ROS_MASTER_URI=http://master:11311"
+      command: rosrun roscpp_tutorials talker
+
+    listener:
+      image: hri/ros:ros-tutorials
+      container_name: listener
+      environment:
+        - "ROS_HOSTNAME=listener"
+        - "ROS_MASTER_URI=http://master:11311"
+      command: rosrun roscpp_tutorials listener
+
+  ```
+
+Then, run the docker-compose.yml as
+  ```
+  $ docker-compose up
+  ```

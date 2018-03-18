@@ -320,9 +320,11 @@ The -m specifies a tagging message, which is stored with the tag. If you don’t
   ```
   $ git branch testing
   ```
-![pic-W2-003](./assets/images/two-brances.png)
+![pic-W2-003](./assets/images/two-branches.png)
   
 How does Git know what branch you’re currently on? It keeps a special pointer called HEAD. In Git, this is a pointer to the local branch you’re currently on. In this case, you’re still on master. The git branch command only created a new branch — it didn’t switch to that branch.
+
+![pic-W2-004](./assets/images/head-to-master.png)
 
 ### Git on the Server
 

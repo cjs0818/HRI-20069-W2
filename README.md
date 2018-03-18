@@ -35,7 +35,7 @@ In Ubuntu 16.04, git is already included, but for the other OS please refer to h
     ...
     ```
 
-#### Make various Dockerfiles using git branch
+#### [1] Make various Dockerfiles using git branch
 Make a Dockerfile like
   ```
   $ vi Dockerfile

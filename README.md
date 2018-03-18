@@ -70,6 +70,11 @@ Also, prepare ros_entrypoint.sh file like
   source "/opt/ros/$ROS_DISTRO/setup.bash"
   exec "$@"
   ```
+  
+  ```
+  $ chmod 755 ros_entrypoint.sh
+  ```
+  
 Build a docker image as
   ```
   $ docker build -t hri/ros:ros-tutorials .

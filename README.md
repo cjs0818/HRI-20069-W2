@@ -336,14 +336,8 @@ How does Git know what branch you’re currently on? It keeps a special pointer 
 
 ### Distributed Git
 
-![pic-W2-003](./assets/images/Git_StorageDataFlow.png)
+![pic-W2-004](./assets/images/Git_StorageDataFlow.png)
 
 ### GitHub
 
 ### Git Tools
-
-### Version control for Dockerfile using git
-  * ros-kinetic-core
-  * ros-kinetic-base
-  * ...
-  * ros-kinetic-desktop-full

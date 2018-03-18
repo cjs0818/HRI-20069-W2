@@ -35,7 +35,16 @@ In Ubuntu 16.04, git is already included, but for the other OS please refer to h
     ...
     ```
 
-#### [1] Make various Dockerfiles using git branch
+#### [1] '01_docker_ros' branch: build a ros-tutorial Dockerfile and do 'docker run'
+If you've already cloned this repository, then you can just checkout the 01_docker_ros branch as
+  ```
+  $ git checkout 01_docker_ros
+  ```
+  or make a branch called 01_docker_ros as
+  ```
+  $ git checkout -b "01_docker_ros"
+  ```
+  
 Make a Dockerfile like
   ```
   $ vi Dockerfile

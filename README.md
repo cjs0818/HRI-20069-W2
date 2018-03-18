@@ -197,7 +197,6 @@ Modify the docker-compose.yml as
 
     master:
       network_mode: host
-  #    build: .
       image: hri/ros:ros-tutorials
       container_name: master
       command:
@@ -205,22 +204,25 @@ Modify the docker-compose.yml as
 
     talker:
       network_mode: host
-  #    build: .
       image: hri/ros:ros-tutorials
       container_name: talker
-  #    environment:
-  #      - "ROS_HOSTNAME=talker"
-  #      - "ROS_MASTER_URI=http://master:11311"
       command: rosrun roscpp_tutorials talker
 
     listener:
       network_mode: host
-  #    build: .
       image: hri/ros:ros-tutorials
       container_name: listener
-  #    environment:
-  #      - "ROS_HOSTNAME=listener"
-  #      - "ROS_MASTER_URI=http://master:11311"
       command: rosrun roscpp_tutorials listener
+  ```
+  
+Then, do
+  ```
+  $ docker-compose up
+  ```
+This network communication is through the host networkd directly.
 
+To stop the containers, type Ctrl-C
+To remove the containers,
+  ```
+  $ docker-compose rm
   ```

@@ -4,16 +4,16 @@ services:
 
   master:
     network_mode: host
-#    build: .
-    image: hri/ros:ros-tutorials
+    build: ./ros-indigo
+#    image: hri/ros:ros-tutorials
     container_name: master
     command:
       - roscore
 
   talker:
     network_mode: host
-#    build: .
-    image: hri/ros:ros-tutorials
+    build: ./ros-kinetic
+#    image: hri/ros:ros-tutorials
     container_name: talker
 #    environment:
 #      - "ROS_HOSTNAME=talker"
@@ -22,8 +22,8 @@ services:
 
   listener:
     network_mode: host
-#    build: .
-    image: hri/ros:ros-tutorials
+    build: ./ros-indigo
+#    image: hri/ros:ros-tutorials
     container_name: listener
 #    environment:
 #      - "ROS_HOSTNAME=listener"

@@ -60,6 +60,16 @@ Make a Dockerfile like
       ros-indigo-common-tutorials \
       && rm -rf /var/lib/apt/lists/*
   ```
+Also, prepare ros_entrypoint.sh file like
+  ```
+  $ vi ros_entrypoint.sh
+  #!/bin/bash
+  set -e
+
+  # setup ros environment
+  source "/opt/ros/$ROS_DISTRO/setup.bash"
+  exec "$@"
+  ```
 Build a docker image as
   ```
   $ docker build -t hri/ros:ros-tutorials .
@@ -124,4 +134,5 @@ Now, see what happens by typing the following commands in different command wind
   $ ./start_listener.sh
   ```
   
-#### [2] Make various Dockerfiles using git branch
+#### [2] '02_docker_ros_compose' branch: build & run a ros-tutorial Dockerfile using 'docker-compose'
+

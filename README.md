@@ -40,7 +40,7 @@ If you've already cloned this repository, then you can just checkout the 01_dock
   ```
   $ git checkout 01_docker_ros
   ```
-  or make a branch called 01_docker_ros as
+  or make a branch called 01_docker_ros and checkout as well like
   ```
   $ git checkout -b "01_docker_ros"
   ```

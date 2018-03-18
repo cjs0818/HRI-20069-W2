@@ -59,6 +59,22 @@ Make a Dockerfile like
       ros-indigo-common-tutorials \
       && rm -rf /var/lib/apt/lists/*
   ```
+
+Also, prepare an executable ros_entrypoint.sh file like
+  ```
+  $ vi ros_entrypoint.sh
+  #!/bin/bash
+  set -e
+
+  # setup ros environment
+  source "/opt/ros/$ROS_DISTRO/setup.bash"
+  exec "$@"
+  ```
+  
+  ```
+  $ chmod 755 ros_entrypoint.sh
+  ```
+  
 Build a docker image as
   ```
   $ docker build -t hri/ros:ros-tutorials .

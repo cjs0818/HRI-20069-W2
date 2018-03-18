@@ -336,6 +336,8 @@ How does Git know what branch you’re currently on? It keeps a special pointer 
 
 ### Distributed Git
 
+![pic-W2-003](./assets/images/Git_StorageDataFlow.png)
+
 ### GitHub
 
 ### Git Tools

@@ -22,7 +22,7 @@ services:
 
   listener:
     network_mode: host
-    build: ./ros-indigo
+    build: ./ros-kinetic
 #    image: hri/ros:ros-tutorials
     container_name: listener
 #    environment:

@@ -327,6 +327,12 @@ How does Git know what branch you’re currently on? It keeps a special pointer 
 ![pic-W2-004](./assets/images/head-to-master.png)
 
 ### Git on the Server
+ #### The Protocols
+ ```
+ $ git clone /path/to/git_project_in_local/project_name.git
+ $ git clone http://github.com/your_ID/project_name.git
+ $ git clone git@github.com:your_ID/project_name.git        # $ ssh-keygen, then ~/.ssh/id_rsa.pub needs to be copied to github (Settings)
+ ```
 
 ### Distributed Git
 

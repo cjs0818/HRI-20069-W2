@@ -362,6 +362,21 @@ This moves HEAD to point to the testing branch.
   ```
 ![pic-W2-008](./assets/images/advance-master.png) 
 
+ #### Basic Branching & Merging
+ 
+ First, let’s say you’re working on your project and have a couple of commits already on the master branch.
+ ![pic-W2-009](./assets/images/basic-branching-1.png) 
+
+  ```
+  $ git checkout -b iss53
+  Switched to a new branch "iss53"
+  ```
+  
+  This is shorthand for:  ``` $ git branch iss53; git checkout iss53 ```
+ ![pic-W2-010](./assets/images/basic-branching-2.png)
+ 
+ 
+ 
 
 ### Git on the Server
  #### The Protocols
@@ -370,7 +385,7 @@ This moves HEAD to point to the testing branch.
  $ git clone http://github.com/your_ID/project_name.git
  $ git clone git@github.com:your_ID/project_name.git        # $ ssh-keygen, then ~/.ssh/id_rsa.pub needs to be copied to github (Settings)
  ```
-![pic-W2-006](./assets/images/git_structure_01.png)
+![pic-W2-009](./assets/images/git_structure_01.png)
 
 ### Distributed Git
 There several kinds of distributed workflows
@@ -383,12 +398,12 @@ There several kinds of distributed workflows
 
  #### 1. Centralized Workflow
  In centralized systems, there is generally a single collaboration model — the centralized workflow. One central hub, or repository, can accept code, and everyone synchronizes their work to it. A number of developers are nodes — consumers of that hub — and synchronize to that one place.
-![pic-W2-005](./assets/images/centralized_workflow.png  "Centralized Workflow")
+![pic-W2-0010](./assets/images/centralized_workflow.png  "Centralized Workflow")
 
 
  #### 2. Integration-Manager Workflow
  Because Git allows you to have multiple remote repositories, it’s possible to have a workflow where each developer has write access to their own public repository and read access to everyone else’s.
-![pic-W2-006](./assets/images/integration-manager.png)
+![pic-W2-011](./assets/images/integration-manager.png)
 
 The process works as follows (see Integration- manager workflow.):
    1. The project maintainer pushes to their public repository.
@@ -398,7 +413,7 @@ The process works as follows (see Integration- manager workflow.):
    5. The maintainer adds the contributor’s repository as a remote and merges locally. 
    6. The maintainer pushes merged changes to the main repository.
 
-![pic-W2-006](./assets/images/Git_StorageDataFlow.png)
+![pic-W2-012](./assets/images/Git_StorageDataFlow.png)
 
 
  #### 3. Dictator & Lieutenants Workflow
@@ -408,7 +423,7 @@ This is a variant of a multiple-repository workflow. It’s generally used by hu
 3. The dictator merges the lieutenants' master branches into the dictator’s master branch.
 4. Finally, the dictator pushes that master branch to the reference repository so the other developers can rebase on it.
 
-![pic-W2-007](./assets/images/benevolent-dictator.png)
+![pic-W2-013](./assets/images/benevolent-dictator.png)
 
 ### GitHub
 

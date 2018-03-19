@@ -36,24 +36,26 @@ In Ubuntu 16.04, git is already included, but for the other OS please refer to h
     ```
 
 ### Git Basics
-Git has three main states that your files can reside in: committed, modified, and staged:
+Git has **three** main **states** that your files can reside in: committed, modified, and staged:
 
     * Committed means that the data is safely stored in your local database.
 
-    * Modified means that you have changed the file but have not committed it to your database yet.
-
     * Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
+
+    * Modified means that you have changed the file but have not committed it to your database yet.
 
 This leads us to the three main sections of a Git project: the Git directory, the working tree, and the staging area.
 
 ![pic-W2-001](./assets/images/areas.png)
 
 You typically obtain a Git repository in one of two ways:
+  ```
   1. Initializing a repository in an existing directory, or
   2. Cloning an existing Git repository from elsewhere.
+  ```
 In either case, you end up with a Git repository on your local machine, ready for work.
 
-#### Initializing a Repository in an Existing Directory
+#### 1. Initializing a Repository in an Existing Directory
 
   * First, make a folder (a git repository)
   ```
@@ -81,17 +83,28 @@ In either case, you end up with a Git repository on your local machine, ready fo
   ```
     $ git commit -m 'v01'
   ```
+  
+  * Invetigation git log
+  ```
+    $ git log -p
+  ```
+  
+  FYI, it will be convenient, make an alias for *log* as follows
+  ```
+	$ git config --global alias.log0 "log --branches --decorate --graph --oneline"
+	$ git log0
+  ```
 
-#### Cloning an Existing Repository
+#### 2. Cloning an Existing Repository
 You clone a repository with git clone <url>. For example, if you want to clone the Git for this class called HRI-20069 , you can do so like this:
  
   ```
-    $ git clone https://github.com/cjs0818/HRI-20069
+    $ git clone https://github.com/cjs0818/HRI-20069-W2
   ```
 If you want to clone the repository into a directory named something other than HRI-20069, you can specify that as the next command-line option:
 
   ```
-    $ git clone https://github.com/cjs0818/HRI-20069 myHRI
+    $ git clone https://github.com/cjs0818/HRI-20069-W2 myHRI
   ```
 
 #### Recording Changes to the Repository
@@ -102,9 +115,6 @@ As you edit files, Git sees them as modified, because you’ve changed them sinc
 #### Checking the Status of Your Files
   ```
     $ git status
-    On branch master
-    Your branch is up-to-date with 'origin/master'.
-    nothing to commit, working directory clean
   ```
 
 #### Working with Remotes
@@ -325,6 +335,33 @@ The -m specifies a tagging message, which is stored with the tag. If you don’t
 How does Git know what branch you’re currently on? It keeps a special pointer called HEAD. In Git, this is a pointer to the local branch you’re currently on. In this case, you’re still on master. The git branch command only created a new branch — it didn’t switch to that branch.
 
 ![pic-W2-004](./assets/images/head-to-master.png)
+
+ #### Switching Branches
+ To switch to an existing branch, you run the git checkout command. Let’s switch to the new testing branch:
+  ```
+  $ git checkout testing
+  ```
+![pic-W2-005](./assets/images/head-to-testing.png)  
+
+  ```
+  $ vim test.rb
+  $ git commit -a -m 'made a change'
+  ```
+![pic-W2-006](./assets/images/advance-testing.png) 
+
+This moves HEAD to point to the testing branch.
+
+  ```
+  $ git checkout master
+  ```
+![pic-W2-007](./assets/images/checkout-master.png) 
+
+  ```
+  $ vim test.rb
+  $ git commit -a -m 'made other changes'
+  ```
+![pic-W2-008](./assets/images/advance-master.png) 
+
 
 ### Git on the Server
  #### The Protocols

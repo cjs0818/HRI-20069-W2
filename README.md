@@ -344,7 +344,7 @@ There several kinds of distributed workflows
  * ...
 
  #### Centralized Workflow
-![pic-W2-005](./assets/images/centralized_workflow.png)
+![pic-W2-005](./assets/images/centralized_workflow.png  "Centralized Workflow")
 
  #### Integration-Manager Workflow
 ![pic-W2-006](./assets/images/integration-manager.png)

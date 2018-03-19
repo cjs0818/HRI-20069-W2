@@ -345,15 +345,32 @@ There several kinds of distributed workflows
 
 
  #### 1. Centralized Workflow
+ In centralized systems, there is generally a single collaboration model — the centralized workflow. One central hub, or repository, can accept code, and everyone synchronizes their work to it. A number of developers are nodes — consumers of that hub — and synchronize to that one place.
 ![pic-W2-005](./assets/images/centralized_workflow.png  "Centralized Workflow")
 
 
  #### 2. Integration-Manager Workflow
+ Because Git allows you to have multiple remote repositories, it’s possible to have a workflow where each developer has write access to their own public repository and read access to everyone else’s.
 ![pic-W2-006](./assets/images/integration-manager.png)
+
+The process works as follows (see Integration- manager workflow.):
+   1. The project maintainer pushes to their public repository.
+   2. A contributor clones that repository and makes changes.
+   3. The contributor pushes to their own public copy.
+   4. The contributor sends the maintainer an email asking them to pull changes.
+   5. The maintainer adds the contributor’s repository as a remote and merges locally. 
+   6. The maintainer pushes merged changes to the main repository.
+
 ![pic-W2-006](./assets/images/Git_StorageDataFlow.png)
 
 
  #### 3. Dictator & Lieutenants Workflow
+This is a variant of a multiple-repository workflow. It’s generally used by huge projects with hundreds of collaborators; one famous example is the Linux kernel. Various integration managers are in charge of certain parts of the repository; they’re called lieutenants. All the lieutenants have one integration manager known as the benevolent dictator. The benevolent dictator pushes from his directory to a reference repository from which all the collaborators need to pull. The process works like this:
+1. Regular developers work on their topic branch and rebase their work on top of master. The master branch is that of the reference directory to which the dictator pushes.
+2. Lieutenants merge the developers' topic branches into their master branch.
+3. The dictator merges the lieutenants' master branches into the dictator’s master branch.
+4. Finally, the dictator pushes that master branch to the reference repository so the other developers can rebase on it.
+
 ![pic-W2-007](./assets/images/benevolent-dictator.png)
 
 ### GitHub

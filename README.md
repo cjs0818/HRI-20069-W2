@@ -363,7 +363,7 @@ This moves HEAD to point to the testing branch.
 ![pic-W2-008](./assets/images/advance-master.png) 
 
  #### Basic Branching & Merging
- 
+ ##### Basic Branching
  First, let’s say you’re working on your project and have a couple of commits already on the master branch.
  ![pic-W2-009](./assets/images/basic-branching-1.png) 
 
@@ -375,9 +375,77 @@ This moves HEAD to point to the testing branch.
   This is shorthand for:  ``` $ git branch iss53; git checkout iss53 ```
  ![pic-W2-010](./assets/images/basic-branching-2.png)
  
- 
- 
+ ```
+ $ vim index.html
+ $ git commit -a -m 'added a new footer [issue 53]'
+ ```
+ ![pic-W2-011](./assets/images/basic-branching-3.png)
 
+ ```
+ $ git checkout master
+ Switched to branch 'master'
+ ```
+
+ ```
+ $ git checkout -b hotfix
+ Switched to a new branch 'hotfix'
+ $ vim index.html
+ $ git commit -a -m 'fixed the broken email address'
+ [hotfix 1fb7853] fixed the broken email address
+ file changed, 2 insertions(+)
+ ```
+  ![pic-W2-012](./assets/images/basic-branching-4.png)
+
+ ```
+ $ git checkout master
+ $ git merge hotfix
+  Updating f42c576..3a0874c
+  Fast-forward
+ index.html | 2 ++
+ 1 file changed, 2 insertions(+)
+ ```
+  ![pic-W2-013](./assets/images/basic-branching-5.png)
+  
+ ```
+ $ git branch -d hotfix
+ Deleted branch hotfix (3a0874c).
+ ```
+Now you can switch back to your work-in-progress branch on issue #53 and continue working on it.
+ ```
+ $ git checkout iss53
+ Switched to branch "iss53"
+ $ vim index.html
+ $ git commit -a -m 'finished the new footer [issue 53]' 
+ [iss53 ad82d7a] finished the new footer [issue 53]
+ 1 file changed, 1 insertion(+)
+ ```
+  ![pic-W2-014](./assets/images/basic-branching-6.png)
+
+ ##### Basic Merging
+ ```
+ $ git checkout master
+ Switched to branch 'master'
+ $ git merge iss53
+ Merge made by the 'recursive' strategy.
+ index.html |    1 +
+ 1 file changed, 1 insertion(+)
+ ```
+  ![pic-W2-015](./assets/images/basic-merging-1.png)
+
+Instead of just moving the branch pointer forward, Git creates a new snapshot that results from this three-way merge and automatically creates a new commit that points to it. This is referred to as a merge commit, and is special in that it has more than one parent.
+
+  ![pic-W2-016](./assets/images/basic-merging-2.png)
+
+Now that your work is merged in, you have no further need for the iss53 branch. You can close the ticket in your ticket-tracking system, and delete the branch:
+ ```
+ $ git branch -d iss53
+ ```
+ 
+  
+  
+  
+  
+  
 ### Git on the Server
  #### The Protocols
  ```

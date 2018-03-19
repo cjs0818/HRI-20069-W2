@@ -336,8 +336,22 @@ How does Git know what branch you’re currently on? It keeps a special pointer 
 ![pic-W2-006](./assets/images/git_structure_01.png)
 
 ### Distributed Git
+There several kinds of distributed workflows
 
-![pic-W2-005](./assets/images/Git_StorageDataFlow.png)
+ * Centralized Workflow
+ * Integration-Manager Workflow
+ * Dictator & Lieutenants Workflow
+ * ...
+
+ #### Centralized Workflow
+![pic-W2-005](./assets/images/centralized_workflow.png)
+
+ #### Integration-Manager Workflow
+![pic-W2-006](./assets/images/integration-manager.png)
+![pic-W2-006](./assets/images/Git_StorageDataFlow.png)
+
+ #### Dictator & Lieutenants Workflow
+![pic-W2-007](./assets/images/benevolent-dictator.png)
 
 ### GitHub
 

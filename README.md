@@ -343,14 +343,17 @@ There several kinds of distributed workflows
  * Dictator & Lieutenants Workflow
  * ...
 
- #### Centralized Workflow
+
+ #### 1. Centralized Workflow
 ![pic-W2-005](./assets/images/centralized_workflow.png  "Centralized Workflow")
 
- #### Integration-Manager Workflow
+
+ #### 2. Integration-Manager Workflow
 ![pic-W2-006](./assets/images/integration-manager.png)
 ![pic-W2-006](./assets/images/Git_StorageDataFlow.png)
 
- #### Dictator & Lieutenants Workflow
+
+ #### 3. Dictator & Lieutenants Workflow
 ![pic-W2-007](./assets/images/benevolent-dictator.png)
 
 ### GitHub

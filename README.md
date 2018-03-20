@@ -556,5 +556,4 @@ This is a variant of a multiple-repository workflow. It’s generally used by hu
 ![pic-W2-024](./assets/images/benevolent-dictator.png)
 
 ### GitHub
-
-### Git Tools
+ Let's go to http://www.github.com and sign up.

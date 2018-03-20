@@ -226,6 +226,86 @@ To remove the containers,
   ```
   $ docker-compose rm
   ```
+  
+  #### roscore in host & talker/listener in Docker
+  Let's install ros-kinetic-ros-base (www.ros.org) as
+  ```
+  $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+  $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+  $ sudo apt-get update
+  $ sudo apt-get install ros-kinetic-ros-base
+  ```
+  Reboot!
+  
+  Modify the Docker file such that 'master:' is commented out as
+  ```
+  version: '2'
+
+  services:
+
+#    master:
+#      network_mode: host
+#      image: hri/ros:ros-tutorials
+#      container_name: master
+#      command:
+#        - roscore
+
+    talker:
+      network_mode: host
+      image: hri/ros:ros-tutorials
+      container_name: talker
+      command: rosrun roscpp_tutorials talker
+
+    listener:
+      network_mode: host
+      image: hri/ros:ros-tutorials
+      container_name: listener
+      command: rosrun roscpp_tutorials listener  
+  ```
+  
+  In the host, type ```$ roscore```. And in an another window type
+  ```
+  $ docker-compose up
+  ```
+
+#### [3] Change docker network from bridge to host
+Modify the docker-compose.yml as
+  ```
+  version: '2'
+
+  services:
+
+    master:
+      network_mode: host
+      image: hri/ros:ros-tutorials
+      container_name: master
+      command:
+        - roscore
+
+    talker:
+      network_mode: host
+      image: hri/ros:ros-tutorials
+      container_name: talker
+      command: rosrun roscpp_tutorials talker
+
+    listener:
+      network_mode: host
+      image: hri/ros:ros-tutorials
+      container_name: listener
+      command: rosrun roscpp_tutorials listener
+  ```
+  
+Then, do
+  ```
+  $ docker-compose up
+  ```
+This network communication is through the host networkd directly.
+
+To stop the containers, type Ctrl-C
+To remove the containers,
+  ```
+  $ docker-compose rm
+  ```
 
 #### [4] Communicate with different ros versions (roscore: indigo, talker: kinetic, listener: kinetic)
 Make two subfolders like

@@ -81,7 +81,7 @@ In either case, you end up with a Git repository on your local machine, ready fo
   
   * Commit the staged files
   ```
-    $ git commit -m 'v01'
+    $ git commit -m "v01"
   ```
   
   * Invetigation git log

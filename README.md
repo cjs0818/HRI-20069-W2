@@ -441,19 +441,81 @@ Now that your work is merged in, you have no further need for the iss53 branch. 
  $ git branch -d iss53
  ```
  
-  
-  
-  
-  
-  
+  ##### Basic Merge Conflicts 
+  If you changed the same part of the same file differently in the two branches you’re merging together, Git won’t be able to merge them cleanly. If your fix for issue #53 modified the same part of a file as the hotfix branch, you’ll get a merge conflict that looks something like this:
+
+ ```
+ $ git merge iss53
+ Auto-merging index.html
+ CONFLICT (content): Merge conflict in index.html
+ Automatic merge failed; fix conflicts and then commit the result.
+ ```
+ 
+  If you want to see which files are unmerged at any point after a merge conflict, you can run git status:
+
+ ```
+ $ git status
+ On branch master
+ You have unmerged paths.
+   (fix conflicts and run "git commit")
+
+ Unmerged paths:
+   (use "git add <file>..." to mark resolution)
+
+     both modified:      index.html
+
+ no changes added to commit (use "git add" and/or "git commit -a")
+ ```
+ 
+ Git adds standard conflict-resolution markers to the files that have conflicts, so you can open them manually and resolve those conflicts. Your file contains a section that looks something like this:
+ ```
+ <<<<<<< HEAD:index.html
+ <div id="footer">contact : email.support@github.com</div>
+ =======
+ <div id="footer">
+  please contact us at support@github.com
+ </div>
+ >>>>>>> iss53:index.html
+ ```
+ This means the version in HEAD (your master branch, because that was what you had checked out when you ran your merge command) is the top part of that block (everything above the =======), while the version in your iss53 branch looks like everything in the bottom part. In order to resolve the conflict, you have to either choose one side or the other or merge the contents yourself. For instance, you might resolve this conflict by replacing the entire block with this:
+
+ ```
+ <div id="footer">
+ please contact us at email.support@github.com
+ </div>
+ ```
+ This resolution has a little of each section, and the <<<<<<<, =======, and >>>>>>> lines have been completely removed. After you’ve resolved each of these sections in each conflicted file, run git add on each file to mark it as resolved.
+
+ ##### Remote Branches
+ Let’s say you have a Git server on your network at git.ourcompany.com. If you clone from this, Git’s clone command automatically names it origin for you, pulls down all its data, creates a pointer to where its master branch is, and names it origin/master locally. Git also gives you your own local master branch starting at the same place as origin’s master branch, so you have something to work from.
+ ![pic-W2-017](./assets/images/remote-branches-1.png)
+ 
+ If you do some work on your local master branch, and, in the meantime, someone else pushes to git.ourcompany.com and updates its master branch, then your histories move forward differently. Also, as long as you stay out of contact with your origin server, your origin/master pointer doesn’t move.
+ ![pic-W2-018](./assets/images/remote-branches-2.png)
+ 
+ To synchronize your work, you run a git fetch origin command. This command looks up which server “origin” is (in this case, it’s git.ourcompany.com), fetches any data from it that you don’t yet have, and updates your local database, moving your origin/master pointer to its new, more up-to-date position.
+ ![pic-W2-019](./assets/images/remote-branches-3.png)
+ 
+ 
+
 ### Git on the Server
  #### The Protocols
- ```
- $ git clone /path/to/git_project_in_local/project_name.git
- $ git clone http://github.com/your_ID/project_name.git
- $ git clone git@github.com:your_ID/project_name.git        # $ ssh-keygen, then ~/.ssh/id_rsa.pub needs to be copied to github (Settings)
- ```
-![pic-W2-009](./assets/images/git_structure_01.png)
+ 1. Local Protocol
+  ```
+  $ git clone /path/to/git_project_in_local/project_name.git
+  ```
+
+ 2. HTTP Protocol
+  ```
+  $ git clone http://github.com/your_ID/project_name.git
+  ```
+
+ 3. SSH Protocol
+  ```
+  $ git clone git@github.com:your_ID/project_name.git        # $ ssh-keygen, then ~/.ssh/id_rsa.pub needs to be copied to github (Settings)
+  ```
+
+![pic-W2-020](./assets/images/git_structure_01.png)
 
 ### Distributed Git
 There several kinds of distributed workflows
@@ -466,12 +528,12 @@ There several kinds of distributed workflows
 
  #### 1. Centralized Workflow
  In centralized systems, there is generally a single collaboration model — the centralized workflow. One central hub, or repository, can accept code, and everyone synchronizes their work to it. A number of developers are nodes — consumers of that hub — and synchronize to that one place.
-![pic-W2-0010](./assets/images/centralized_workflow.png  "Centralized Workflow")
+![pic-W2-0021](./assets/images/centralized_workflow.png  "Centralized Workflow")
 
 
  #### 2. Integration-Manager Workflow
  Because Git allows you to have multiple remote repositories, it’s possible to have a workflow where each developer has write access to their own public repository and read access to everyone else’s.
-![pic-W2-011](./assets/images/integration-manager.png)
+![pic-W2-022](./assets/images/integration-manager.png)
 
 The process works as follows (see Integration- manager workflow.):
    1. The project maintainer pushes to their public repository.
@@ -481,7 +543,7 @@ The process works as follows (see Integration- manager workflow.):
    5. The maintainer adds the contributor’s repository as a remote and merges locally. 
    6. The maintainer pushes merged changes to the main repository.
 
-![pic-W2-012](./assets/images/Git_StorageDataFlow.png)
+![pic-W2-023](./assets/images/Git_StorageDataFlow.png)
 
 
  #### 3. Dictator & Lieutenants Workflow
@@ -491,7 +553,7 @@ This is a variant of a multiple-repository workflow. It’s generally used by hu
 3. The dictator merges the lieutenants' master branches into the dictator’s master branch.
 4. Finally, the dictator pushes that master branch to the reference repository so the other developers can rebase on it.
 
-![pic-W2-013](./assets/images/benevolent-dictator.png)
+![pic-W2-024](./assets/images/benevolent-dictator.png)
 
 ### GitHub
 
